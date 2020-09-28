@@ -17,7 +17,7 @@ namespace NDSRenameUI
         public string PartialName { set; get; }
         public string CurrentFileName{ set; get; }
         public string NewFileName{ set; get; }
-        public string FileName { set; get; }
+        public string FilePath { set; get; }
         public string GameTDBMapping { set; get; }
         public string GameId{ set; get; }
     }
@@ -93,7 +93,7 @@ namespace NDSRenameUI
             this.MetaData.CurrentFileName = Path.GetFileNameWithoutExtension(openFileDlg.FileName);
             this.MetaData.NewFileName = Path.GetFileNameWithoutExtension(openFileDlg.FileName);
 
-            this.MetaData.FileName = openFileDlg.FileName;
+            this.MetaData.FilePath = openFileDlg.FileName;
             try
             {
                 using (FileStream fileStream = File.OpenRead(openFileDlg.FileName))
