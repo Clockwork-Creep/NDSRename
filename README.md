@@ -2,7 +2,7 @@
 
 ### Overview
 
-***NDSRename*** is a tool for inspecting and resolving Nintendo DS (.nds) game names. When a cartridge is dumped using GodMode9 the name of the binary file will not include the game. 
+***NDSRename*** is a Windows GUI tool for inspecting and resolving Nintendo DS (.nds) game names. When a cartridge is dumped using GodMode9 the name of the binary file will not include the game. 
 
 This tool will:
   1. load the metadata header
