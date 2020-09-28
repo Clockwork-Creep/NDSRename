@@ -45,6 +45,7 @@ namespace NDSRenameUI
                     this.GameIdTextBox.Text = ndsMetaData.GameId;
                     this.GameTDBMappingTextBox.Text = ndsMetaData.GameTDBMapping;
                     this.CurrentFileNameTextBox.Text = ndsMetaData.CurrentFileName;
+                    this.FileNameTextBox.Text = ndsMetaData.FilePath;
                     this._ndsMetaData = ndsMetaData;
                 }
                 catch (NDSFileStreamException ex)

@@ -9,3 +9,5 @@ This tool will:
   2. extract the game id
   3. resolve the game title in the GamesTDB database
   4. allow you to rename the file to the resolved title and/or provide your own
+
+![Renaming Backups](./ui-example.png)
