@@ -1,0 +1,43 @@
+﻿<Window x:Class="NDSRenameUI.MainWindow"  
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"  
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"  
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"  
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"  
+        xmlns:local="clr-namespace:NDSRenameUI"  
+        mc:Ignorable="d"  
+        Title="NDS Rename" Height="325" Width="600" >
+    <Grid>
+        <Canvas Height="325" Width="550" Margin = "10" >
+            <StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBox  IsReadOnly = "True" Height="40" Text = "Open NDS file..." Margin = "10" Width = "300" Name="FileNameTextBox"/>
+                    <Button x:Name="BrowseButton" Content="Browse NDS File" Height = "30" Padding="5" Click="BrowseButton_Click"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text = "Partial Name" Margin = "10,10,10,10" Width = "100" />
+                    <TextBox IsReadOnly = "True" Margin = "-40,10,10,10" Width = "100" Name="PartialNameTextBox"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text = "Game Id" Margin = "130,10,10,10" Width = "100" />
+                    <TextBox IsReadOnly = "True" Margin = "-60,10,10,10" Width = "100" Name="GameIdTextBox"/>
+                </StackPanel>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text = "GameTDB Mapping" Margin = "10" Width = "200" />
+                    <TextBox IsReadOnly = "True" Margin = "-100,10,10,10" Width = "350" Name="GameTDBMappingTextBox"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text = "Current Filename" Margin = "10" Width = "200" />
+                    <TextBox IsReadOnly = "True" Margin = "-100,10,10,10" Width = "350" Name="CurrentFileNameTextBox"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text = "New Filename" Margin = "10" Width = "200" />
+                    <TextBox Margin = "-100,10,10,10" Width = "350" Height="20" Name="NewFileNameTextBox"/>
+                    <Button x:Name="RenameFileButtom" Content="Rename" Margin = "10" Height = "30" Padding="5" Click="RenameFileButton_Click"/>
+                </StackPanel>
+                <Button x:Name="CloseButton" Content="Close" Margin = "10" Height = "30" Padding="5" Width="50" Click="CloseButton_Click"/>
+            </StackPanel>
+        </Canvas>
+    </Grid>
+</Window> 
