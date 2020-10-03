@@ -29,6 +29,8 @@ namespace NDSRenameUI
             this.GameIdTextBox.Text = "";
             this.GameTDBMappingTextBox.Text = "";
             this.CurrentFileNameTextBox.Text = "";
+            this.FileNameTextBox.Text = "Open NDS file...";
+            this._ndsMetaData = new NDSMetaData();
         }
         private void BrowseButton_Click(object sender, RoutedEventArgs e)
         {
@@ -41,7 +43,7 @@ namespace NDSRenameUI
                 {
                     var ndsMetaData = this._ndsMetaDataProcessor.ProcessNDSFile(openFileDlg);
                     this.PartialNameTextBox.Text = ndsMetaData.PartialName;
-                    this.NewFileNameTextBox.Text = ndsMetaData.NewFileName;
+                    this.NewFileNameTextBox.Text = this.CreateSafeFilename(ndsMetaData.NewFileName);
                     this.GameIdTextBox.Text = ndsMetaData.GameId;
                     this.GameTDBMappingTextBox.Text = ndsMetaData.GameTDBMapping;
                     this.CurrentFileNameTextBox.Text = ndsMetaData.CurrentFileName;
@@ -61,6 +63,14 @@ namespace NDSRenameUI
 
         private void DisplayError(string error) => MessageBox.Show(error, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
         private void DisplayRenameSuccess() => MessageBox.Show("Rename Successful", "Complete", MessageBoxButton.OK, MessageBoxImage.Information);
+        private string CreateSafeFilename(string filename) {
+            foreach (char c in Path.GetInvalidFileNameChars())
+            {
+                filename = filename.Replace(c, '-');
+            }
+            filename = filename.Replace(' ', '-');
+            return filename;
+        }
 
         private void RenameFileButton_Click(object sender, RoutedEventArgs e)
         {
@@ -71,14 +81,15 @@ namespace NDSRenameUI
                 {
                     this.DisplayError("nds directory not found");
                 }
-                else if (string.IsNullOrEmpty(this._ndsMetaData.CurrentFileName))
+                else if (string.IsNullOrEmpty(this.NewFileNameTextBox.Text))
                 {
                     this.DisplayError("nds file not found");
                 }
                 else
                 {
-                    File.Move(this._ndsMetaData.FilePath, ndsDirectory + "\\" + this._ndsMetaData.NewFileName + ".nds");
+                    File.Move(this._ndsMetaData.FilePath, ndsDirectory + "\\" + this.NewFileNameTextBox.Text + ".nds");
                     this.DisplayRenameSuccess();
+                    this.ResetView();
                     return;
                 }
             }
@@ -86,11 +97,6 @@ namespace NDSRenameUI
             {
                 this.DisplayError(ex.Message);
             }
-            finally
-            {
-                this.ResetView();
-            }
-            this.DisplayError("Unknown Error");
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
