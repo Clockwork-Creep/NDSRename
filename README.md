@@ -1,6 +1,6 @@
 # NDSRename
 
-[Latest Release](https://github.com/Clockwork-Creep/NDSRename/releases/tag/v1.0.0)
+[Latest Release](https://github.com/Clockwork-Creep/NDSRename/releases/tag/v1.0.1)
 
 ### Overview
 
